@@ -1,0 +1,21 @@
+
+
+.error-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+}
+
+.error-container h1 {
+    font-size: 3rem; 
+    font-family: 'Bambi', sans-serif; 
+    color: #333;
+    margin-bottom: 20px; 
+}
+
+#error-container img {
+    max-width: 100%; 
+    height: auto; 
+}

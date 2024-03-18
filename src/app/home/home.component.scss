@@ -1,0 +1,23 @@
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  min-height: 100vh;
+  background: url('../../assets/images/backgrounds/food1.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.sentence {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Brush Script MT', cursive;
+   color: white;
+  font-size: 80px;
+  line-height: 1.5; 
+  text-align: center;
+  width: 80%; 
+  max-width: 600px; 
+}

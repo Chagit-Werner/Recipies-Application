@@ -1,0 +1,40 @@
+
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background: url('../../../../assets/images/backgrounds/login\,register.jpg') center/cover no-repeat;
+  }
+  
+  form {
+    width: 35%; 
+    height:50vh; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0 20px; 
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #d00707 !important;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
