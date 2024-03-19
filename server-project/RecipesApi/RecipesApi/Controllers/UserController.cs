@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using RecipesApi.Entities;
 
 namespace RecipesApi.Controllers
@@ -9,7 +9,7 @@ namespace RecipesApi.Controllers
     {
         public static List<User> users = new List<User>()
         {
-             new User(1, "yn", "Moliver21", "y0556779585@gmail.com", "1111")
+             new User(1, "yn", "Rabbi Akiva", "y@gmail.com", "1111")
           
         };
         [HttpGet]

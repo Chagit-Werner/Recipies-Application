@@ -1,4 +1,4 @@
-import {  FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 import { Recipe } from '../../../recipe.model';
 import { RecipeService } from '../../../services/recipe.service';
 import { Category } from '../../../category.model';
-
+import { UserService } from '../../../services/user.service';
 
 
 
@@ -20,11 +20,15 @@ import { Category } from '../../../category.model';
 })
 export class AddRecipeComponent {
   recipeForm !: FormGroup;
+  countUsers!: number
+  countRecipies!: number
 
-  constructor(private _recipeServie: RecipeService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private _recipeServie: RecipeService, private _userService:UserService, private formBuilder: FormBuilder,
+     private router: Router) { }
 
   ingredientsFormArray!: FormArray;
   instructionsFormArray!: FormArray;
+  code!:number
   categories: Category[] = [];
   ngOnInit(): void {
     this._recipeServie.getCategories().subscribe({
@@ -35,6 +39,8 @@ export class AddRecipeComponent {
         console.error(error);
       }
     });
+    this._userService.getUsers().subscribe((users)=>this.countUsers=users.length);
+    this._recipeServie.getRecipes().subscribe((recipies)=>this.countRecipies=recipies.length);
 
     this.recipeForm = this.formBuilder.group({
       nameRecipe: ['', Validators.required],
@@ -65,8 +71,6 @@ export class AddRecipeComponent {
     this.instructionsFormArray.push(this.formBuilder.control(''));
 
   }
-
-
   removeInstruction(index: number) {
     this.instructionsFormArray.removeAt(index);
   }
@@ -101,6 +105,10 @@ export class AddRecipeComponent {
 
   submit() {
 
+  const userData = sessionStorage.getItem('userInfo');
+    if (userData) {
+      this.code = JSON.parse(userData).userId;
+    }
     if (this.instructionsFormArray.length === 0) {
       this.addInstruction();
     }
@@ -110,23 +118,21 @@ export class AddRecipeComponent {
     if (userInfoString) {
       const userInfo = JSON.parse(userInfoString);
       const userCode = userInfo.userId;
-      console.log("USERCODE", userCode);
+     
     }
     const r: Recipe = {
-      codeRecipe: 0,
+      codeRecipe: this.countRecipies+1,
       nameRecipe: nameRecipe,
       codeCategory: codeCategory,
       duration: duration,
       degree: degree,
       date: date,
-      products: this.recipeForm.value.products.filter((ingredient: string) => ingredient.trim() !== ''),  
-      instructions: this.recipeForm.value.instructions.filter((ingredient: string) => ingredient.trim() !== ''), 
-      codeUser: 0,
+      products: this.recipeForm.value.products.filter((ingredient: string) => ingredient.trim() !== ''),
+      instructions: this.recipeForm.value.instructions.filter((ingredient: string) => ingredient.trim() !== ''),
+      codeUser: this.code,
       image: image
     }
-    console.log('d', r.products)
-
-
+   
     this._recipeServie.addRecipe(r).subscribe(
       (recipe) => {
         this.resetForm();

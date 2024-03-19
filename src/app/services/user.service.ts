@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { User } from '../user/user.model';
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,8 @@ export class UserService {
 
   login(userLogin: {}): Observable<any> {
     console.log("userLogin", userLogin);
-    //  let y=  this.http.post('/api/User/Login',userLogin)
+ 
     let y = this.http.post('https://localhost:7155/api/User/Login', userLogin)
-
-    console.log(y);
     return y;
   }
   register(register: User) {

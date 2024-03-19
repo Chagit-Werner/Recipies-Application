@@ -12,7 +12,7 @@ import { viewRecipeGuard } from '../view-recipe.guard';
 const reciprRoutes: Routes = [
   { path: '', redirectTo: 'allRecipies', pathMatch: 'full' },
   { path: 'all-recipies', component: AllRecipesComponent },
-  { path: 'add-recipe', component: AddRecipeComponent },
+  { path: 'add-recipe', component: AddRecipeComponent ,canActivate:[viewRecipeGuard] },
   { path: 'recipe-details/:id', component:RecipeDetailsComponent, canActivate:[viewRecipeGuard] },
   { path: 'edit-recipe/:id', component:EditRecipeComponent },
 ]

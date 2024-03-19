@@ -33,7 +33,7 @@ export class RegisterComponent {
   public nextUserCode !: number
   ngOnInit(): void {
     this._userService.getUsers().subscribe(users => {
-      this.nextUserCode = users.length; 
+      this.nextUserCode = users.length;
     });
     if (this.userData) {
       this.name = JSON.parse(this.userData).username;
@@ -56,21 +56,10 @@ export class RegisterComponent {
   register(): void {
 
     let newUser: User = this.registerForm.value as User; // יש להמיר את הערכים לסוג User
-    console.log("משתמש חדש:", this.registerForm.value );
-
-    
+    newUser.id = this.nextUserCode + 1;
     this._userService.register(newUser).subscribe({});
-    if (this.userData) {
-      const userInfo = JSON.parse(this.userData);
-      userInfo.password = this.registerForm.get('password')?.value;
-      userInfo.username = this.registerForm.get('name')?.value;
-      userInfo.codeUser = this.nextUserCode;
-      sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-    }
-    else {
-      const userInfo = { username: this.registerForm.get('password')?.value, password: this.registerForm.get('name')?.value, userId: this.nextUserCode };
-      sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
-    }
+    const userInfo = { username: this.registerForm.get('password')?.value, password: this.registerForm.get('name')?.value, userId: this.nextUserCode + 1 };
+    sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
     this.router.navigate(['recipies/all-recipies'])
 
   }

@@ -5,7 +5,7 @@ export const viewRecipeGuard: CanActivateFn = (route, state) => {
   {   return true
   }
   Swal.fire({
-   title: " You cannot view the recipe since u haven't login! ",
+   title: " You must login / register !",
    icon: 'warning',
    confirmButtonText: 'Confirm'
  })

@@ -16,27 +16,25 @@ export class RecipeDetailsComponent {
   public recipe!: Recipe
   public itemId!: number
   stars: number[] = [];
-  code: number | null = null;
-  constructor(private route: ActivatedRoute, private _recipeServie: RecipeService, private router:Router) { }
-  
+  code!: number;
+  constructor(private route: ActivatedRoute, private _recipeServie: RecipeService, private router: Router) { }
+
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
       this.itemId = param['id']
       this._recipeServie.getRecipeById(this.itemId).subscribe({
         next: (res) => {
-          this.recipe = res;         
+          this.recipe = res;
         },
       })
     })
-     this.stars = Array(this.recipe.degree).fill(0);
+    this.stars = Array(this.recipe.degree).fill(0);
+  }
+  isCurrentUserRecipeOwner(): boolean {
     const userData = sessionStorage.getItem('userInfo');
-  
     if (userData) {
       this.code = JSON.parse(userData).userId;
     }
-  }
-
-  isCurrentUserRecipeOwner(): boolean {
     return this.code == this.recipe.codeUser
   }
 
@@ -61,8 +59,8 @@ export class RecipeDetailsComponent {
         }
       });
   }
-  editRecipe(){
-    this.router.navigate(['recipies/edir-recipe', this.recipe.codeRecipe])
+  editRecipe() {
+    this.router.navigate(['recipies/edit-recipe', this.recipe.codeRecipe])
   }
 }
 

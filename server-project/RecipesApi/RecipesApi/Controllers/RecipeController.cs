@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using RecipesApi.Entities;
 using System.IO.Pipelines;
@@ -75,7 +75,7 @@ namespace RecipesApi.Controllers
         {
             "Blend strawberries, milk, and vanilla ice cream", "Add sugar to taste", "Serve chilled"
         },
-        null,
+        2,
         "../../assets/images/food/shake.jpg"
     ),
     new Recipe("Strawberry Pie",

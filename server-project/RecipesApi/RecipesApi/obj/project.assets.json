@@ -229,11 +229,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CHAGIT\\studies\\ו סמינר בסד\\angular\\פרויקט בסד\\server-project\\RecipesApi\\RecipesApi\\RecipesApi.csproj",
+      "projectUniqueName": "C:\\CHAGIT\\studies\\ו סמינר בסד\\angular\\פרויקט גמר בסד\\client-project\\server-project\\RecipesApi\\RecipesApi\\RecipesApi.csproj",
       "projectName": "RecipesApi",
-      "projectPath": "C:\\CHAGIT\\studies\\ו סמינר בסד\\angular\\פרויקט בסד\\server-project\\RecipesApi\\RecipesApi\\RecipesApi.csproj",
+      "projectPath": "C:\\CHAGIT\\studies\\ו סמינר בסד\\angular\\פרויקט גמר בסד\\client-project\\server-project\\RecipesApi\\RecipesApi\\RecipesApi.csproj",
       "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\CHAGIT\\studies\\ו סמינר בסד\\angular\\פרויקט בסד\\server-project\\RecipesApi\\RecipesApi\\obj\\",
+      "outputPath": "C:\\CHAGIT\\studies\\ו סמינר בסד\\angular\\פרויקט גמר בסד\\client-project\\server-project\\RecipesApi\\RecipesApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
